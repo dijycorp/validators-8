@@ -11,5 +11,11 @@
 
     <artifactId>aggregate-functionnal-validations</artifactId>
 
-
+    <dependencies>
+        <dependency>
+            <groupId>fr.diacono</groupId>
+            <artifactId>functionnal-validations</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>
