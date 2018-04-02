@@ -12,6 +12,7 @@
     <modules>
         <module>functionnal-validations</module>
         <module>code-validations</module>
+        <module>aggregate-functionnal-validations</module>
     </modules>
 
     <dependencies>

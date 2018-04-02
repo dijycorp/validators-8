@@ -4,21 +4,17 @@ import fr.diacono.validators.controls.StringControl;
 import fr.diacono.validators.errors.MyError;
 import fr.diacono.validators.errors.MyErrorLevel;
 
-public class StringValidator {
+import static fr.diacono.validators.SimpleValidator.from;
 
-    public static ValidationResult isNotBlank(String value) {
-        return SimpleValidator
-                .from(StringControl.isNotBlank(), MyError.of(MyErrorLevel.MANDATORY, "is blank"))
-                .test(value);
+class StringValidator {
+
+    static ValidationResult isNotBlank(String value) {
+        return from(StringControl.isNotBlank(), MyError.of(MyErrorLevel.MANDATORY, "is blank")).test(value);
     }
 
-    public static ValidationResult isSize(String value, int size) {
-        Validator<String> notNullValidator = SimpleValidator
-                .from(StringControl.isNotBlank(), MyError.of(MyErrorLevel.MANDATORY, "is blank"));
-        Validator<String> isSizeValidator = SimpleValidator
-                .from(p -> p.length() == size, MyError.of(MyErrorLevel.MANDATORY, "not the size expected"));
-        return notNullValidator
-                .and(isSizeValidator)
+    static ValidationResult isSize(String value, int size) {
+        return from(StringControl.isNotBlank(), MyError.of(MyErrorLevel.MANDATORY, "is blank"))
+                .and(from(StringControl.isSize(size), MyError.of(MyErrorLevel.MANDATORY, "not the size expected")))
                 .test(value);
     }
 

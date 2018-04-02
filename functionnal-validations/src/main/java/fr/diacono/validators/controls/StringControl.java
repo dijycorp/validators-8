@@ -46,4 +46,8 @@ public class StringControl extends ObjectControl {
                 && (isAfter(isBefore).test(s) || isSame(isBefore).test(s));
     }
 
+    public static Predicate<String> isSize(int isSize) {
+        return s -> isNotNull().test(s)
+                && s.length() == isSize;
+    }
 }
