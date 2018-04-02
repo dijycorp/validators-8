@@ -13,21 +13,21 @@ public class DateControlTest {
 
     @Test
     void should_match_when_the_date_is_same_as_given() {
-        Assertions.assertTrue(TemporalDateControl.isSameDate(localDate).test(localDate));
+        Assertions.assertTrue(DateControl.isDateSame(localDate).test(localDate));
     }
 
     @Test
     void should_match_when_the_date_given_is_less() {
-        Assertions.assertTrue(TemporalDateControl.isLess(localDateLess).test(localDate));
+        Assertions.assertTrue(DateControl.isSameLess(localDateLess).test(localDate));
     }
 
     @Test
     void should_match_when_the_date_given_is_more() {
-        Assertions.assertTrue(TemporalDateControl.isMore(localDateMore).test(localDate));
+        Assertions.assertTrue(DateControl.isDateMore(localDateMore).test(localDate));
     }
 
     @Test
     void should_match_when_the_date_is_between() {
-        Assertions.assertTrue(TemporalDateControl.isBetween(localDateLess, localDateMore).test(localDate));
+        Assertions.assertTrue(DateControl.isDateBetween(localDateLess, localDateMore).test(localDate));
     }
 }

@@ -55,4 +55,35 @@ class StringControlTest {
     void should_match_when_the_string_given_is_between() {
         Assertions.assertTrue(StringControl.isBetween("daniel", "jeremie").test("geremie"));
     }
+
+    @Test
+    void should_match_when_the_string_is_not_blank() {
+        Assertions.assertTrue(StringControl.isNotBlank().test("a not blank value"));
+    }
+
+    @Test
+    void should_not_match_when_the_string_is_blank() {
+        Assertions.assertFalse(StringControl.isNotBlank().test(""));
+    }
+
+    @Test
+    void should_not_match_when_the_string_is_null() {
+        Assertions.assertFalse(StringControl.isNotBlank().test(null));
+    }
+
+    @Test
+    void should_match_when_the_email_is_valid() {
+        Assertions.assertTrue(StringControl.isAnEmail().test("jeremie@diacono.fr"));
+    }
+
+    @Test
+    void should_not_match_when_the_email_is_not_valid() {
+        Assertions.assertFalse(StringControl.isAnEmail().test("jeremie"));
+    }
+
+    @Test
+    void should_not_match_when_the_value_is_null() {
+        Assertions.assertFalse(StringControl.isAnEmail().test(null));
+    }
+
 }
