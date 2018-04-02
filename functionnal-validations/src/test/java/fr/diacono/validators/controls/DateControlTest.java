@@ -9,7 +9,7 @@ public class DateControlTest {
 
     private LocalDate localDate = LocalDate.of(2000, 12, 15);
     private LocalDate localDateLess = LocalDate.of(2000, 12, 1);
-    private LocalDate localDateMore = LocalDate.of(2000, 12, 31);
+    private LocalDate localDateGreater = LocalDate.of(2000, 12, 31);
 
     @Test
     void should_match_when_the_date_is_same_as_given() {
@@ -18,16 +18,16 @@ public class DateControlTest {
 
     @Test
     void should_match_when_the_date_given_is_less() {
-        Assertions.assertTrue(DateControl.isSameLess(localDateLess).test(localDate));
+        Assertions.assertTrue(DateControl.isDateLess(localDate).test(localDateLess));
     }
 
     @Test
-    void should_match_when_the_date_given_is_more() {
-        Assertions.assertTrue(DateControl.isDateMore(localDateMore).test(localDate));
+    void should_match_when_the_date_given_is_greater() {
+        Assertions.assertTrue(DateControl.isDateGreater(localDate).test(localDateGreater));
     }
 
     @Test
     void should_match_when_the_date_is_between() {
-        Assertions.assertTrue(DateControl.isDateBetween(localDateLess, localDateMore).test(localDate));
+        Assertions.assertTrue(DateControl.isDateBetween(localDateLess, localDateGreater).test(localDate));
     }
 }
